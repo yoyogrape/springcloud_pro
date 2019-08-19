@@ -1,0 +1,28 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
+server:
+  port: 9000
+spring:
+  application:
+    name: yidiankt-zuul
+
+ribbon:
+  eureka:
+    enabled: false
+#Ribbon请求的微服务serviceId
+soooo:
+  ribbon:
+    listOfServers: http://www.baidu.com,http://www.douyu.com
+
+zuul:
+  routes:
+    #路由名称随意命名api-order
+    api-order:
+      # ‘/**’任意字符
+      path: /api-order/**
+      serviceId: yidiankt-order
+    ttt:
+      serviceId: soooo
+      path: /ttt/**
